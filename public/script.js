@@ -1,38 +1,40 @@
-//fucntion to show selected section
-function showSection(sectionID){
-    //initially, select all sections
-    // use querySelectorAll for all sections with class content and homecontent
-    const sections = document.querySelectorAll('.content');
-    const homesection = document.querySelectorAll('.homecontent');
-
-    //hide the resulting content sections using foreach
-    sections.forEach(section => {
-        section.style.display='none';
-    });
-
-
-    //select the section that would
-    //be displayed when clicked
-    const activeSection = document.getElementById(sectionID);
-    if(activeSection){
-        activeSection.style.display='block';
-    }
+function showSection(sectionID) {
+    document.getElementById('home').style.display = 'none';
+    document.querySelectorAll('.content').forEach(s => s.style.display = 'none');
+    const active = document.getElementById(sectionID);
+    if(active) active.style.display = 'block';
 }
 
-//for the insertion success
-window.onload = function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('status') === 'success') {
-        const toast = document.getElementById('success-toast');
-        toast.classList.remove('toast-hidden');
-        
-        // Hide it automatically after 3 seconds
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.classList.add('toast-hidden'), 500);
-        }, 3000);
+function hideAllContent() {
+    document.querySelectorAll('.content').forEach(s => s.style.display = 'none');
+    document.getElementById('home').style.display = 'block';
+}
 
-        // Clean the URL
-        window.history.replaceState({}, document.title, window.location.pathname);
+function clearFields() {
+    document.querySelectorAll('.field').forEach(input => input.value = '');
+}
+
+window.onload = function() {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+
+    // Handle Alerts
+    if (status === 'success') {
+        alert("Added Successfully");
+        showSection('create');
+    } else if (status === 'updated') {
+        alert("Update Successfully");
+        showSection('update');
+    } else if (status === 'deleted') {
+        alert("Deleted Successfully");
+        showSection('delete');
+    } 
+    // Handle Search persistence
+    else if (params.has('search_u')) {
+        showSection('update');
+    } else if (params.has('search_d')) {
+        showSection('delete');
+    } else {
+        hideAllContent();
     }
 }
