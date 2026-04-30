@@ -1,4 +1,4 @@
 <?php
-echo'<p>Hello world</p>';
+echo'<p>Congratulations Your Information Has Been Updated Successfully</p>';
 
 ?>

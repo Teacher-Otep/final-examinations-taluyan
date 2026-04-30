@@ -2,23 +2,26 @@ body{
     display:flex;
     justify-content: center;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(212, 210, 210);
+    align-items: center; 
 }
 .navbar{
     display: flex;
     justify-content:space-evenly;
     width:80%;
-    height:5vh;
+    height:50px;
     align-items: center;
-    background-color: rgba(102, 176, 241, 1);
-    color: white;
+    background-color: rgb(113, 115, 243);
+    color: rgb(35, 90, 243);
     border-radius:45px;
+    margin-top: 20px;
 }
 
 #logo{
-    width:40px;
-    height:auto;
-    filter: invert(30%) sepia(100%) saturate(500%) hue-rotate(200deg);
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 .navbarbuttons{
@@ -26,19 +29,30 @@ body{
     border:none;
     width:100px;
     border-radius:45px;
-    backdrop-filter: 5px;
     color:aliceblue;
+    cursor: pointer;
 }
 
-.content,.homecontent{
+.navbarbuttons:hover {
+    background-color: rgb(8, 8, 8);
+}
+
+.content{
+    display:none; 
+    text-align: center;
+    width: 80%;
+    margin-top: 50px;
+}
+
+.homecontent{
     display:block;
-    align-items: center;
+    text-align: center;
+    margin-top: 100px;
 }
 
 .contenttitle,.label,.btns,.splash{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:rgb(102, 176, 241); 
-
+    color:rgb(41, 54, 243); 
 }
 
 .splash{
@@ -53,6 +67,7 @@ body{
     display: inline-block;
     width: 150px; 
     font-weight: bold;
+    text-align: left;
 }
 
 .field {
@@ -64,24 +79,46 @@ body{
 
 .btns{
     width:182px;
-    padding:3px;
+    padding:8px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(15, 15, 15);
+    cursor: pointer;
+}
+
+.btns:hover {
+    background-color: rgb(7, 201, 39);
+    color: white;
 }
 
 #btncontainer{
     display:flex;
+    justify-content: center;
     gap:20px;
+    margin-top: 20px;
 }
 
-/* For the insertion success message */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+th, td {
+    padding: 15px 10px;
+    border: 1px solid #262574;
+    text-align: left;
+    font-weight: normal;
+}
+
 #success-toast {
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #4CAF50;
+    background-color: #07f00e;
     color: white;
     padding: 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgb(0, 0, 0);
     transition: opacity 0.5s ease-in-out;
     z-index: 1000;
 }
